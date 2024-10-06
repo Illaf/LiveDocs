@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.ql-toolbar {
+  background-color: #f1f3f4;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  padding: 10px;
+  z-index: 2
+  ;
+}
+
+.ql-editor{
+  background-color: #fff;
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  min-height: 600px;
+  box-shadow: 0 1px 5px rgba(60, 64, 67, 0.1), 0 2px 10px rgba(60, 64, 67, 0.1);
+  border-radius: 4px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media print{
+  body{
+    background: none;
+  }
+  .ql-toolbar{
+    display: none;
+  }
+  .ql-editor{
+    height: 15in;
+    width: 6.5in;
+    margin: 0;
+    box-shadow: none;
+  }
+}
