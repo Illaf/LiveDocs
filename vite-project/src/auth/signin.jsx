@@ -1,6 +1,6 @@
 // Login.js
 import React, { useState } from 'react';
-import { login } from './authService';
+
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -45,4 +45,5 @@ const Login = () => {
   );
 };
 
+}
 export default Login;

@@ -1,28 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import TextEditor from './components/TextEditor'
-import SignUp from './auth/signup'
-import { BrowserRouter as Router,Routes,Route } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import TextEditor from './components/TextEditor';
+import SignUp from './auth/signup';
 import SignIn from './auth/signin';
-import {v4 as uuidv4} from 'uuid';
-function App() {
-  const [count, setCount] = useState(0)
+import { v4 as uuidv4 } from 'uuid';
 
+function Home() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(`/document/${uuidv4()}`);
+  }, [navigate]);
+
+  return null;
+}
+
+function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' exact/>
-        <Redirect to={`/documents/${uuidv4()}`}/>
-<Route path= "/signup" element={<SignUp/>}/>
-<Route path= "/signin" element={<SignIn/>}/>
-<Route path='/document/:id'>
-<TextEditor/>
-</Route>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/document/:id" element={<TextEditor />} />
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
